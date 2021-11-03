@@ -1,6 +1,6 @@
 ---
 id: jsx-in-depth
-title: JSX In Depth
+title: JSX विस्तार से
 permalink: docs/jsx-in-depth.html
 redirect_from:
   - "docs/jsx-spread.html"
@@ -13,7 +13,7 @@ redirect_from:
   - "docs/jsx-in-depth-ko-KR.html"
 ---
 
-Fundamentally, JSX just provides syntactic sugar for the `React.createElement(component, props, ...children)` function. The JSX code:
+मूल रूप से, JSX केवल `React.createElement(component, props, ...children)` फ़ंक्शन के लिए वाक्यात्मक सौंदर्य प्रदान करता है। JSX कोड:
 
 ```js
 <MyButton color="blue" shadowSize={2}>
@@ -21,7 +21,7 @@ Fundamentally, JSX just provides syntactic sugar for the `React.createElement(co
 </MyButton>
 ```
 
-compiles into:
+में कंपाइल करता है:
 
 ```js
 React.createElement(
@@ -31,13 +31,13 @@ React.createElement(
 )
 ```
 
-You can also use the self-closing form of the tag if there are no children. So:
+यदि टैग का कोई चाइल्ड नहीं हैं तो आप टैग के स्व-समापन रूप का भी उपयोग कर सकते हैं। इसलिए:
 
 ```js
 <div className="sidebar" />
 ```
 
-compiles into:
+में कंपाइल करता है:
 
 ```js
 React.createElement(
@@ -46,19 +46,19 @@ React.createElement(
 )
 ```
 
-If you want to test out how some specific JSX is converted into JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).
+यदि आप यह जांचना चाहते हैं कि कुछ विशिष्ट JSX को जावास्क्रिप्ट में कैसे बदला जाता है, तो आप [ऑनलाइन Babel कंपाइलर](बेबेल: //jsx-simple-example) आज़मा सकते हैं।
 
-## Specifying The React Element Type {#specifying-the-react-element-type}
+## React एलिमेंट के प्रकार का उल्लेखन {#specifying-the-react-element-type}
 
-The first part of a JSX tag determines the type of the React element.
+JSX टैग का पहला भाग react एलिमेंट के प्रकार को निर्धारित करता है।
 
-Capitalized types indicate that the JSX tag is referring to a React component. These tags get compiled into a direct reference to the named variable, so if you use the JSX `<Foo />` expression, `Foo` must be in scope.
+कैपिटलाइज़्ड प्रकार इंगित करते हैं कि JSX टैग एक रिएक्ट कौम्पोनॅन्ट की बात कर रहा है। ये टैग नेम्ड वेरिएबल के सीधे संदर्भ में कंपाइल हो जाते हैं, इसलिए यदि आप JSX `<Foo />` एक्सप्रेशन का उपयोग करते हैं, तो `Foo` स्कोप में होना चाहिए।
 
-### React Must Be in Scope {#react-must-be-in-scope}
+### React स्कोप में होनी चाहिए {#react-must-be-in-scope}
 
-Since JSX compiles into calls to `React.createElement`, the `React` library must also always be in scope from your JSX code.
+चूंकि JSX `React.createElement` को कॉल में कंपाइल करता है, इसलिए `React` लाइब्रेरी भी हमेशा आपके JSX कोड के स्कोप में होनी चाहिए।
 
-For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript:
+उदाहरण के लिए, इस कोड में दोनों इम्पोर्ट्स आवश्यक हैं, भले ही `React` और `CustomButton` सीधे जावास्क्रिप्ट के रेफ़्रेन्स में नहीं हैं:
 
 ```js{1,2,5}
 import React from 'react';
@@ -70,7 +70,7 @@ function WarningButton() {
 }
 ```
 
-If you don't use a JavaScript bundler and loaded React from a `<script>` tag, it is already in scope as the `React` global.
+यदि आप जावास्क्रिप्ट बंडलर का उपयोग नहीं करते है एवं React को `<script>` टैग द्वारा लोड करते है, तो `React` पहले से ही ग्लोबल स्कोप में उपस्थित होती है।
 
 ### Using Dot Notation for JSX Type {#using-dot-notation-for-jsx-type}
 
